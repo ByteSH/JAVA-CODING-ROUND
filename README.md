@@ -311,3 +311,350 @@ public class LargestNumberLess {
 **[:top: Scroll to Top](#java-coding-round)**
 
 ---
+
+**8. How to find union & intersection of two arrays in Java?**
+
+```java
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.List;
+
+public class ArrayUnionIntersection {
+
+    public static void main(String[] args) {
+        Integer[] arr1 = {1, 2, 4, 5, 6};
+        Integer[] arr2 = {2, 3, 5, 7};
+
+        Set<Integer> set = new HashSet<>();
+        
+        set.addAll(Arrays.asList(arr1));
+        set.addAll(Arrays.asList(arr2));
+
+        System.out.println("Union: " + set);
+
+
+        Set<Integer> set1 = new HashSet<>(Arrays.asList(arr1));
+
+        List<Integer> intersection = Arrays.stream(arr2)
+                                          .filter(set1::contains)
+                                          .distinct()
+                                          .toList();
+        System.out.println("Intersection: " + intersection);
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**9. How to check whether user input is number or not in Java?**
+
+```java
+import java.util.Scanner;
+
+public class CheckNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter input: ");
+
+        if (sc.hasNextDouble()) {
+            System.out.println("It is a number.");
+        } else {
+            System.out.println("It is NOT a number.");
+        }
+        sc.close();
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**10. How to separate zeros from non-zeros in an array.**
+
+```java
+import java.util.Arrays;
+
+public class SeparateZeros {
+    public static void main(String[] args) {
+        int[] arr = {14, 0, 5, 2, 0, 3, 0};
+        int pos = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                int temp = arr[i];
+                arr[i] = arr[pos];
+                arr[pos++] = temp;
+            }
+        }
+
+        System.out.println(Arrays.toString(arr)); // Output: [14, 5, 2, 3, 0, 0, 0]
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**11. Selection sort in Java.**
+
+```java
+import java.util.Arrays;
+
+public class SelectionSort {
+    public static void main(String[] args) {
+        int[] arr = {64, 25, 12, 22, 11};
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIdx]) minIdx = j;
+            }
+            int temp = arr[minIdx];
+            arr[minIdx] = arr[i];
+            arr[i] = temp;
+        }
+
+        System.out.println(Arrays.toString(arr)); // Output: [11, 12, 22, 25, 64]
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**12. Reverse the string with preserving the position of spaces. INPUT : I Am Not String | OUTPUT : g ni rtS toNmAI**
+
+```java
+public class ReversePreserveSpace {
+    public static void main(String[] args) {
+        String str = "I Am Not String";
+        char[] result = str.toCharArray();
+
+        int left = 0, right = str.length() - 1;
+
+        while (left < right) {
+            if (result[left] == ' ') left++;
+            else if (result[right] == ' ') right--;
+            else {
+                char temp = result[left];
+                result[left++] = result[right];
+                result[right--] = temp;
+            }
+        }
+
+        System.out.println(String.valueOf(result)); // Output: g ni rtS toNmAI
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**13. percentage of uppercase, lowercase, digits and special characters in a string.**
+
+```java
+public class CharacterPercentage {
+    public static void main(String[] args) {
+        String str = "Tiger Runs @ 100 km/h";
+        int len = str.length(), upper = 0, lower = 0, digits = 0, special = 0;
+
+        for (char c : str.toCharArray()) {
+            if (Character.isUpperCase(c)) upper++;
+            else if (Character.isLowerCase(c)) lower++;
+            else if (Character.isDigit(c)) digits++;
+            else special++;
+        }
+
+        System.out.printf("Uppercase: %.2f%%\n", (upper * 100.0) / len);
+        System.out.printf("Lowercase: %.2f%%\n", (lower * 100.0) / len);
+        System.out.printf("Digits:    %.2f%%\n", (digits * 100.0) / len);
+        System.out.printf("Special:   %.2f%%\n", (special * 100.0) / len);
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**14. Find missing number in an array.**
+
+```java
+public class MissingNumber {
+    public static void main(String[] args) {
+        int[] arr = {1, 4, 5, 3, 7, 8, 6};
+        int n = 8;
+
+        int expectedSum = n * (n + 1) / 2;
+        int actualSum = 0;
+
+        for (int num : arr) actualSum += num;
+
+        System.out.println("Missing Number: " + (expectedSum - actualSum)); // Output: 2
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**15. Singletone class creation.**
+
+```java
+class Singleton {
+    private static Singleton singleInstance = null;
+
+    private Singleton() {
+        System.out.println("Singleton instance created");
+    }
+
+    public static Singleton getInstance() {
+        if (singleInstance == null) {
+            singleInstance = new Singleton();
+        }
+        return singleInstance;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Singleton obj1 = Singleton.getInstance(); // Creates instance
+        Singleton obj2 = Singleton.getInstance(); // Returns existing instance
+
+        System.out.println(obj1 == obj2); // Output: true
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**16. Custome Exception.**
+
+```java
+class DivideByZeroException extends Exception {
+    public DivideByZeroException(String message) {
+        super(message);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            divide(10, 0);
+        } catch (DivideByZeroException e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        }
+    }
+
+    public static int divide(int a, int b) throws DivideByZeroException {
+        if (b == 0) {
+            throw new DivideByZeroException("Divide by Zero not allowed.");
+        }
+        return a / b;
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**17. Create Thread with Thread & Runnable.**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        // Method 1: Inline Lambda with Thread
+        Thread thread = new Thread(() -> {
+            System.out.println("Smart way of running a thread!");
+        });
+        thread.start();
+
+        // Method 2: Runnable Reference with Lambda
+        Runnable fetchPrice = () -> {
+            System.out.println("Fetching stock data in background...");
+        };
+
+        Thread t1 = new Thread(fetchPrice);
+        t1.start();
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**18. Generics.**
+
+```java
+class RepoGenerics<T> {
+    private T item;
+
+    public void setItem(T item) {
+        this.item = item;
+    }
+
+    public T getItem() {
+        return item;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        RepoGenerics<Integer> repoGenerics = new RepoGenerics<>();
+        repoGenerics.setItem(123);
+        System.out.println(repoGenerics.getItem()); // Output: 123
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
+
+**19. Iteration.**
+
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Forward Iteration with safe removal
+        List<Integer> list1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 4));
+        Iterator<Integer> iterator = list1.iterator();
+        
+        while (iterator.hasNext()) {
+            if (iterator.next() == 3) {
+                iterator.remove();
+            }
+        }
+        System.out.println(list1); // Output: [1, 2, 4, 4]
+
+        // Reverse Iteration
+        List<Integer> list2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 4));
+        ListIterator<Integer> listIterator = list2.listIterator(list2.size());
+        
+        while (listIterator.hasPrevious()) {
+            Integer number = listIterator.previous();
+            System.out.print(number + " "); // Output: 4 4 3 2 1 
+        }
+    }
+}
+```
+
+**[:top: Scroll to Top](#java-coding-round)**
+
+---
