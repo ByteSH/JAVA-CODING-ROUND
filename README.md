@@ -150,17 +150,13 @@ public class StringAndNumberChecks {
     public static boolean isArmstrong(int number) {
         if (number < 0) return false;
 
-        int original = number;
         int digits = String.valueOf(number).length();
-        int sum = 0;
 
-        while (number > 0) {
-            int lastDigit = number % 10;
-            sum += Math.pow(lastDigit, digits);
-            number /= 10;
-        }
+        int sum = Arrays.stream(String.valueOf(number).split(""))
+                .mapToInt(digit -> (int) Math.pow(Integer.parseInt(digit), digits))
+                .sum();
 
-        return sum == original;
+        return sum == number;
     }
 
     public static void main(String[] args) {
