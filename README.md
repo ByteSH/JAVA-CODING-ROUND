@@ -227,10 +227,10 @@ class Main {
 
         String s = "Hi my name is Hamza";
 
-        Map<Character , Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
 
-        for (char a : s.replace(" ","").toCharArray()){
-            map.put(a, map.getOrDefault(a,0)+1);
+        for(String i : s.replace(" ","").split("")){
+            map.put(i, map.getOrDefault(i,0)+1);
         }
         map.forEach((k,v)-> System.out.println(k+" : "+v));
     }
