@@ -246,23 +246,15 @@ class Main {
 ```java
 public class LargestNumberLess {
 
-    public static int getLLessThanN(int number, int digit) {
-        char c = Integer.toString(digit).charAt(0);
-
-        for (int i = number - 1; i >= 0; i--) {
-            if (Integer.toString(i).indexOf(c) == -1) {
-                return i; // Returns the largest number without digit D
-            }
-        }
-        return -1;
-    }
-
     public static void main(String[] args) {
         int number = 145;
         int digit = 4;
 
-        int result = getLLessThanN(number, digit);
-        System.out.println("Output: " + result); // Output: 139
+        int result = number - 1;
+        while (String.valueOf(result).contains(String.valueOf(digit))) {
+            result --;
+        }
+        System.out.println("Result : " + result);
     }
 }
 ```
