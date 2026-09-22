@@ -266,32 +266,15 @@ public class LargestNumberLess {
 **7. How to find all pairs of elements in an array whose sum is equal to given number? INPUT : {4, 5, 7, 11, 9, 13, 8, 12},20 | OUTPUT : (9, 11), (7, 13) and (8, 12)**
 
 ```java
-public class LargestNumberLess {
-
-    public static int getLLessThanN(int number, int digit) {
-        char c = Integer.toString(digit).charAt(0);
-
-        for (int i = number - 1; i >= 0; i--) {
-            if (Integer.toString(i).indexOf(c) == -1) {
-                return i; // Returnspublic class FindPairs {
-
-    public static void findPairs(int[] inputArray, int inputNumber) {
-        System.out.println("Pairs of elements whose sum is " + inputNumber + " are:");
-
-        for (int i = 0; i < inputArray.length; i++) {
-            for (int j = i + 1; j < inputArray.length; j++) {
-                if (inputArray[i] + inputArray[j] == inputNumber) {
-                    System.out.println(inputArray[i] + " + " + inputArray[j] + " = " + inputNumber);
-                }
-            }
-        }
-    }
-
+class Main {
     public static void main(String[] args) {
-        int[] array = {4, 5, 7, 11, 9, 13, 8, 12};
-        int givenNumber = 20;
+        int[] a = {4, 5, 7, 11, 9, 13, 8, 12};
+        int sum = 20;
 
-        findPairs(array, givenNumber);
+        for (int i = 0; i < a.length; i++)
+            for (int j = i + 1; j < a.length; j++)
+                if (a[i] + a[j] == sum)
+                    System.out.println("(" + a[i] + ", " + a[j] + ")");
     }
 }
 ```
