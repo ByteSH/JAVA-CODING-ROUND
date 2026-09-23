@@ -288,30 +288,22 @@ class Main {
 ```java
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Set;
-import java.util.List;
 
-public class ArrayUnionIntersection {
-
+class Main {
     public static void main(String[] args) {
         Integer[] arr1 = {1, 2, 4, 5, 6};
         Integer[] arr2 = {2, 3, 5, 7};
 
-        Set<Integer> set = new HashSet<>();
-        
-        set.addAll(Arrays.asList(arr1));
-        set.addAll(Arrays.asList(arr2));
+        HashSet<Integer> union = new HashSet<>(Arrays.asList(arr1));
+        union.addAll(Arrays.asList(arr2));
 
-        System.out.println("Union: " + set);
+        HashSet<Integer> intersection = new HashSet<>();
+        Arrays.stream(arr1)
+              .filter(x -> Arrays.asList(arr2).contains(x))
+              .forEach(intersection::add);
 
-
-        Set<Integer> set1 = new HashSet<>(Arrays.asList(arr1));
-
-        List<Integer> intersection = Arrays.stream(arr2)
-                                          .filter(set1::contains)
-                                          .distinct()
-                                          .toList();
-        System.out.println("Intersection: " + intersection);
+        System.out.println("UNION: " + union);
+        System.out.println("INTERSECTION: " + intersection);
     }
 }
 ```
