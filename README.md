@@ -370,19 +370,19 @@ import java.util.Arrays;
 
 public class SelectionSort {
     public static void main(String[] args) {
-        int[] arr = {64, 25, 12, 22, 11};
 
-        for (int i = 0; i < arr.length - 1; i++) {
-            int minIdx = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[minIdx]) minIdx = j;
+        int[] arr = {64, 25, 12, 242, 11};
+
+        for(int i = 0; i <= arr.length -2 ; i++){
+            for(int j = i+1; j <= arr.length -1 ; j++){
+            int left = arr[i];
+                if(arr[i] > arr[j]){
+                    arr[i] = arr[j];
+                    arr[j] = left;
+                }
             }
-            int temp = arr[minIdx];
-            arr[minIdx] = arr[i];
-            arr[i] = temp;
         }
-
-        System.out.println(Arrays.toString(arr)); // Output: [11, 12, 22, 25, 64]
+        IO.println(Arrays.toString(arr));  // Output: [11, 12, 25, 64, 242]
     }
 }
 ```
