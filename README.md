@@ -446,17 +446,16 @@ public class CharacterPercentage {
 **14. Find missing number in an array.**
 
 ```java
-public class MissingNumber {
+import java.util.Arrays;
+
+public class Main {
     public static void main(String[] args) {
-        int[] arr = {1, 4, 5, 3, 7, 8, 6};
-        int n = 8;
+        int[] arr = {1, 4, 5, 3, 7, 8, 6, 10};
+        Arrays.sort(arr);
 
-        int expectedSum = n * (n + 1) / 2;
-        int actualSum = 0;
-
-        for (int num : arr) actualSum += num;
-
-        System.out.println("Missing Number: " + (expectedSum - actualSum)); // Output: 2
+        for(int i = 1; i < arr.length ; i++)
+            for(int n = arr[i-1]+1; n < arr[i]; n++)
+                IO.println(n);
     }
 }
 ```
