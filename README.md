@@ -396,22 +396,18 @@ public class SelectionSort {
 ```java
 public class ReversePreserveSpace {
     public static void main(String[] args) {
+
         String str = "I Am Not String";
-        char[] result = str.toCharArray();
+        String str_new = new StringBuffer(str.replace(" ","")).reverse().toString();
+        int right = 0;
 
-        int left = 0, right = str.length() - 1;
-
-        while (left < right) {
-            if (result[left] == ' ') left++;
-            else if (result[right] == ' ') right--;
-            else {
-                char temp = result[left];
-                result[left++] = result[right];
-                result[right--] = temp;
-            }
+        for(int i = 0; i <= str.length() -1 ; i++){
+            if(str.charAt(i) == ' ') IO.print(' ');
+            else{
+                IO.print(str_new.charAt(right)); // Output: g ni rtS toNmAI
+                right++;
+            } 
         }
-
-        System.out.println(String.valueOf(result)); // Output: g ni rtS toNmAI
     }
 }
 ```
