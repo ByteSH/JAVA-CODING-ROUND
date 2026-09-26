@@ -471,13 +471,11 @@ class Singleton {
     private static Singleton singleInstance = null;
 
     private Singleton() {
-        System.out.println("Singleton instance created");
+        IO.println("Singleton instance created");
     }
 
     public static Singleton getInstance() {
-        if (singleInstance == null) {
-            singleInstance = new Singleton();
-        }
+        if (singleInstance == null) singleInstance = new Singleton();
         return singleInstance;
     }
 }
