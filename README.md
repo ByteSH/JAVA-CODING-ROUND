@@ -598,15 +598,6 @@ public class Main {
             }
         }
         System.out.println(list1); // Output: [1, 2, 4, 4]
-
-        // Reverse Iteration
-        List<Integer> list2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 4));
-        ListIterator<Integer> listIterator = list2.listIterator(list2.size());
-        
-        while (listIterator.hasPrevious()) {
-            Integer number = listIterator.previous();
-            System.out.print(number + " "); // Output: 4 4 3 2 1 
-        }
     }
 }
 ```
