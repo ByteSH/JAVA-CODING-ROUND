@@ -135,15 +135,9 @@ public class StringAndNumberChecks {
     public static boolean isAnagram(String str1, String str2) {
         if (str1 == null || str2 == null) return false;
 
-        char[] arr1 = str1.replaceAll("\\s+", "").toLowerCase().toCharArray();
-        char[] arr2 = str2.replaceAll("\\s+", "").toLowerCase().toCharArray();
+		return Arrays.stream(str1.split("")).sorted().collect(Collectors.joining())
+                    .equals(Arrays.stream(str2.split("")).sorted().collect(Collectors.joining()));
 
-        if (arr1.length != arr2.length) return false;
-
-        Arrays.sort(arr1);
-        Arrays.sort(arr2);
-
-        return Arrays.equals(arr1, arr2);
     }
 
     // 3. Check if an Integer is an Armstrong Number
