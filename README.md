@@ -174,35 +174,31 @@ public class StringAndNumberChecks {
 
 ---
 
-**4. How to find duplicate elements in an array with and without stream**
+**4. How to find duplicate elements in an array.**
 
 ```java
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
-public class DuplicatesWithoutStream {
-    public static void main(String[] args) {
+void main() {
 
-	// Without Streams
-        int[] numbers = {1, 2, 3, 4, 2, 5, 3, 6};
-        Set<Integer> seen = new HashSet<>();
+    // Method 01:
+    int[] numbers = {1, 2, 3, 4, 2, 5, 3, 6};
+    Set<Integer> seen = new HashSet<>();
 
-        System.out.print("Duplicates: ");
-        for (int num : numbers) {
-            if (!seen.add(num)) {
-                System.out.print(num + " "); // Output: 2 3 
-            }
+    for (int num : numbers) {
+        if (!seen.add(num)) {
+            System.out.print(num + " ");
         }
-
-
-
-        System.out.print("Duplicates: ");
-        Arrays.stream(numbers)
-              .filter(n -> !seen.add(n))
-              .distinct() // Optional: Prevents printing the same duplicate twice if it appears 3+ times
-              .forEach(n -> System.out.print(n + " ")); // Output: 2 3
-
     }
+
+    // Method 02:
+    Arrays.stream(numbers)
+            .boxed()
+            .collect(Collectors.toSet())
+            .forEach(System.out::println);
 }
 ```
 
