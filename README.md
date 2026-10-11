@@ -276,25 +276,18 @@ class Main {
 **8. How to find union & intersection of two arrays in Java?**
 
 ```java
-import java.util.Arrays;
-import java.util.HashSet;
+void main() {
 
-class Main {
-    public static void main(String[] args) {
-        Integer[] arr1 = {1, 2, 4, 5, 6};
-        Integer[] arr2 = {2, 3, 5, 7};
+    Integer[] arr1 = {1, 2, 4, 5, 6};
+    Integer[] arr2 = {2, 3, 5, 7};
 
-        HashSet<Integer> union = new HashSet<>(Arrays.asList(arr1));
-        union.addAll(Arrays.asList(arr2));
+    Set<Integer> set = new HashSet<>(Arrays.asList(arr1));
+    set.addAll(Arrays.asList(arr2));
+    IO.println(set);
 
-        HashSet<Integer> intersection = new HashSet<>();
-        Arrays.stream(arr1)
-              .filter(x -> Arrays.asList(arr2).contains(x))
-              .forEach(intersection::add);
-
-        System.out.println("UNION: " + union);
-        System.out.println("INTERSECTION: " + intersection);
-    }
+    Arrays.stream(arr1)
+            .filter( x -> Arrays.asList(arr2).contains(x))
+            .forEach(System.out::println);
 }
 ```
 
