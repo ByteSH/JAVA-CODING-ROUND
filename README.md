@@ -300,18 +300,13 @@ void main() {
 ```java
 import java.util.Scanner;
 
-public class CheckNumber {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter input: ");
+void main(){
+    Scanner scanner = new Scanner(System.in);
 
-        if (sc.hasNextDouble()) {
-            System.out.println("It is a number.");
-        } else {
-            System.out.println("It is NOT a number.");
-        }
-        sc.close();
-    }
+    if(scanner.hasNextDouble()) IO.println("Number.");
+    else IO.println("Not A Number!");
+
+    scanner.close();
 }
 ```
 
